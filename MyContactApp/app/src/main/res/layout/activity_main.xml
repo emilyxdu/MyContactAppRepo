@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:layout_height="match_parent" android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp" tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,19 +24,22 @@
         android:layout_toEndOf="@+id/textView" />
 
     <Button
+        android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Data"
-        android:id="@+id/button_add"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="addData" />
+        android:elevation="0dp"
+        android:onClick="insertData"
+        android:text="Add Contact"
+        android:layout_below="@+id/editText_phonenumber"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="33dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="DATE ADDED:"
+        android:text="AGE:"
         android:id="@+id/textView2"
         android:layout_marginTop="73dp"
         android:layout_below="@+id/editText_name"
@@ -48,8 +51,7 @@
         android:id="@+id/editText_age"
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignEnd="@+id/editText_name"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_alignStart="@+id/button_add" />
+        android:layout_toEndOf="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,5 +70,14 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button_add"
+        android:layout_below="@+id/button_add"
+        android:onClick="getAllData"
+        android:text="See contacts" />
 
 </RelativeLayout>
