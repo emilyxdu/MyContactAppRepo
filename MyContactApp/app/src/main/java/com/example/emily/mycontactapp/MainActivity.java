@@ -1,6 +1,7 @@
 package com.example.emily.mycontactapp;
 
 import android.database.Cursor;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,14 +32,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void addBoolean (View v) {
+    public void addData (View v) {
         boolean isInserted = myDb.insertData(editName.getText().toString(), editAge.getText().toString(), editPhoneNumber.getText().toString());
         if(isInserted == true){
             Log.d("MyContact", "Data insertion successful");
             //create toast message to user indicating data inserted correctly
             Toast.makeText(getApplicationContext(), "Data insertion successful", Toast.LENGTH_SHORT).show();
-
-
         }
         else{
             Log.d("MyContact", "Data insertion unsuccessful");
@@ -53,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         if (res.getCount() == 0) {
             showMessage("Error", "No data found in database");
             //put a Log.d message and toast
+            Log.d("AllContacts", "Data not found");
+            Toast.makeText(getApplicationContext(), "Data not found", Toast.LENGTH_SHORT).show();
 
             return;
         }
@@ -62,10 +63,23 @@ public class MainActivity extends AppCompatActivity {
             //append each COL to buffer
             // use getString method
 
+        while (res.moveToNext()) {
+            buffer.append("ID " + res.getString(0) + "\n");
+            buffer.append("Name " + res.getString(1) + "\n");
+            buffer.append("Age " + res.getString(2) + "\n");
+            buffer.append("Phone Number " + res.getString(3) + "\n");
+        }
+
         showMessage("Data", buffer.toString());
     }
 
     private void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+
 
     }
 

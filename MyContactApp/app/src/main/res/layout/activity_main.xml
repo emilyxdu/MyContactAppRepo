@@ -11,7 +11,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="NAME:"
         android:id="@+id/textView"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="56dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -27,13 +27,13 @@
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="0dp"
-        android:onClick="insertData"
-        android:text="Add Contact"
-        android:layout_below="@+id/editText_phonenumber"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editText_phonenumber"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="33dp"
+        android:elevation="0dp"
+        android:onClick="addData"
+        android:text="Add Contact" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="AGE:"
         android:id="@+id/textView2"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="57dp"
         android:layout_below="@+id/editText_name"
         android:layout_alignParentStart="true" />
 
@@ -59,9 +59,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="PHONE NUMBER:"
         android:id="@+id/textView3"
+        android:layout_marginTop="66dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="82dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -77,7 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/button_add"
         android:layout_below="@+id/button_add"
-        android:onClick="getAllData"
+        android:layout_marginTop="11dp"
+        android:onClick="viewData"
         android:text="See contacts" />
 
 </RelativeLayout>
