@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editName;
     EditText editAge;
     EditText editPhoneNumber;
+    EditText editSearch;
     Button btnAddData;
 
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         editName = (EditText) findViewById(R.id.editText_name);
         editAge = (EditText) findViewById(R.id.editText_age);
         editPhoneNumber = (EditText) findViewById(R.id.editText_phonenumber);
+        editSearch = (EditText) findViewById((R.id.editText_search));
     }
 
 
@@ -69,8 +71,17 @@ public class MainActivity extends AppCompatActivity {
             buffer.append("Age " + res.getString(2) + "\n");
             buffer.append("Phone Number " + res.getString(3) + "\n");
         }
-
         showMessage("Data", buffer.toString());
+    }
+
+
+    public void searchData(View v) { //why can't this method execute
+        StringBuffer buffer = myDb.findData(editSearch);
+        if (buffer.equals(null)) {
+            Log.d("Search", "Search not found");
+            Toast.makeText(getApplicationContext(), "Search not found", Toast.LENGTH_SHORT).show();
+        }
+        showMessage("Contact", buffer.toString());
     }
 
     private void showMessage(String title, String message) {
@@ -79,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
-
-
     }
 
 

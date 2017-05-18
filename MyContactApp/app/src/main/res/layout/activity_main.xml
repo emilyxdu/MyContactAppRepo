@@ -27,13 +27,12 @@
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/editText_phonenumber"
-        android:layout_marginEnd="15dp"
         android:layout_marginTop="33dp"
         android:elevation="0dp"
         android:onClick="addData"
-        android:text="Add Contact" />
+        android:text="Add Contact"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,10 +74,31 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button_add"
-        android:layout_below="@+id/button_add"
-        android:layout_marginTop="11dp"
         android:onClick="viewData"
-        android:text="See contacts" />
+        android:text="See contacts"
+        android:layout_alignBaseline="@+id/button_add"
+        android:layout_alignBottom="@+id/button_add"
+        android:layout_toEndOf="@+id/button_add"
+        android:layout_marginStart="13dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button"
+        android:layout_below="@+id/button"
+        android:layout_marginTop="28dp"
+        android:onClick="searchData"
+        android:text="Search contact" />
+
+    <EditText
+        android:id="@+id/editText_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
