@@ -75,13 +75,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void searchData(View v) { //why can't this method execute
-        StringBuffer buffer = myDb.findData(editSearch);
-        if (buffer.equals(null)) {
-            Log.d("Search", "Search not found");
-            Toast.makeText(getApplicationContext(), "Search not found", Toast.LENGTH_SHORT).show();
+    public void searchData(View v) { //contact app stops working
+        Cursor res = myDb.findData(editSearch);
+        StringBuffer buffer = new StringBuffer();
+        while(res.moveToNext()) {
+            buffer.append("ID " + res.getString(0) + "\n");
+            buffer.append("Name " + res.getString(1) + "\n");
+            buffer.append("Age " + res.getString(2) + "\n");
+            buffer.append("Phone Number " + res.getString(3) + "\n");
         }
-        showMessage("Contact", buffer.toString());
+        showMessage("Search contact", buffer.toString());
     }
 
     private void showMessage(String title, String message) {

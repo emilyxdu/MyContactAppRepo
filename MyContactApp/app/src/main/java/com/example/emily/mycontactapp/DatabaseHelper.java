@@ -57,10 +57,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
 
-    public StringBuffer  findData(EditText find){
+    public Cursor  findData(EditText find){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        while(res.moveToNext()) {
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + "WHERE NAME = find" , null);
+        return res;
+
+        /*while(res.moveToNext()) {
             if (find.equals(res.getString(1))) {
                 StringBuffer buffer = new StringBuffer();
                 buffer.append("ID " + res.getString(0) + "\n");
@@ -70,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 return buffer;
             }
         }
-        return null;
+        return null;*/
     }
 
 
