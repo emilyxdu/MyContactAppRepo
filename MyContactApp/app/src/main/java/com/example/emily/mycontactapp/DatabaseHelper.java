@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor  findData(EditText find){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME + "WHERE NAME = find" , null);
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " WHERE NAME =?", new String[] {find.getText().toString()});
         return res;
 
         /*while(res.moveToNext()) {

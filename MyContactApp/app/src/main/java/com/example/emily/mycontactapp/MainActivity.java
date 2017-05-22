@@ -78,13 +78,24 @@ public class MainActivity extends AppCompatActivity {
     public void searchData(View v) { //contact app stops working
         Cursor res = myDb.findData(editSearch);
         StringBuffer buffer = new StringBuffer();
-        while(res.moveToNext()) {
-            buffer.append("ID " + res.getString(0) + "\n");
-            buffer.append("Name " + res.getString(1) + "\n");
-            buffer.append("Age " + res.getString(2) + "\n");
-            buffer.append("Phone Number " + res.getString(3) + "\n");
+
+        if (res.getCount() == 0) {
+            showMessage("Error", "No contacts in database");
+            //put a Log.d message and toast
+            Log.d("SearchContacts", "No contacts found");
+            Toast.makeText(getApplicationContext(), "No contacts found", Toast.LENGTH_SHORT).show();
         }
+        else {
+            while(res.moveToNext()) {
+                buffer.append("ID " + res.getString(0) + "\n");
+                buffer.append("Name " + res.getString(1) + "\n");
+                buffer.append("Age " + res.getString(2) + "\n");
+                buffer.append("Phone Number " + res.getString(3) + "\n");
+            }
+        }
+
         showMessage("Search contact", buffer.toString());
+        Log.d("Search contacts", "Contact found");
     }
 
     private void showMessage(String title, String message) {
